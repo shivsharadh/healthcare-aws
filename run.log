@@ -1,0 +1,185 @@
+Build & Push to ECR	Set up job	﻿2026-02-23T18:35:42.2996372Z Current runner version: '2.331.0'
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3022529Z ##[group]Runner Image Provisioner
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3023509Z Hosted Compute Agent
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3024093Z Version: 20260123.484
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3024744Z Commit: 6bd6555ca37d84114959e1c76d2c01448ff61c5d
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3025443Z Build Date: 2026-01-23T19:41:17Z
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3026269Z Worker ID: {9d961843-9378-4dcf-8e5c-28f0456e2254}
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3027043Z Azure Region: westus3
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3027611Z ##[endgroup]
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3029120Z ##[group]Operating System
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3029822Z Ubuntu
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3030316Z 24.04.3
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3030823Z LTS
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3031377Z ##[endgroup]
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3031935Z ##[group]Runner Image
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3032504Z Image: ubuntu-24.04
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3033122Z Version: 20260201.15.1
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3034189Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260201.15/images/ubuntu/Ubuntu2404-Readme.md
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3036234Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260201.15
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3037189Z ##[endgroup]
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3038363Z ##[group]GITHUB_TOKEN Permissions
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3040335Z Contents: read
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3040997Z Metadata: read
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3041548Z Packages: read
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3042082Z ##[endgroup]
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3044418Z Secret source: Actions
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3045189Z Prepare workflow directory
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3579920Z Prepare all required actions
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.3617908Z Getting action download info
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.8248482Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build & Push to ECR	Set up job	2026-02-23T18:35:42.9367004Z Download action repository 'aws-actions/configure-aws-credentials@v4' (SHA:7474bc4690e29a8392af63c5b98e7449536d5c3a)
+Build & Push to ECR	Set up job	2026-02-23T18:35:43.8109870Z Download action repository 'aws-actions/amazon-ecr-login@v2' (SHA:062b18b96a7aff071d4dc91bc00c4c1a7945b076)
+Build & Push to ECR	Set up job	2026-02-23T18:35:44.6248705Z Complete job name: Build & Push to ECR
+Build & Push to ECR	Checkout code	﻿2026-02-23T18:35:44.7021235Z ##[group]Run actions/checkout@v4
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7022576Z with:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7023382Z   repository: shivsharadh/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7024733Z   token: ***
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7025479Z   ssh-strict: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7026425Z   ssh-user: git
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7027215Z   persist-credentials: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7028112Z   clean: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7028903Z   sparse-checkout-cone-mode: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7029877Z   fetch-depth: 1
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7030637Z   fetch-tags: false
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7031431Z   show-progress: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7032232Z   lfs: false
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7032986Z   submodules: false
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7033812Z   set-safe-directory: true
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7034942Z env:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7035855Z   AWS_REGION: ***
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7037166Z   ECR_REPOSITORY: ***
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7038057Z   ECS_CLUSTER: healthcare-cluster
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7039136Z   ECS_SERVICE: healthcare-svc
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7040118Z   CONTAINER_NAME: healthcare-api
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.7041127Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8123477Z Syncing repository: shivsharadh/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8126821Z ##[group]Getting Git version info
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8128469Z Working directory is '/home/runner/work/healthcare-aws/healthcare-aws'
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8130518Z [command]/usr/bin/git version
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8184299Z git version 2.52.0
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8210571Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8231860Z Temporarily overriding HOME='/home/runner/work/_temp/52dc5fbe-bfbc-4e89-907e-50484d297fed' before making global git config changes
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8234676Z Adding repository directory to the temporary git global config as a safe directory
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8237691Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/healthcare-aws/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8275481Z Deleting the contents of '/home/runner/work/healthcare-aws/healthcare-aws'
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8279145Z ##[group]Initializing the repository
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8283126Z [command]/usr/bin/git init /home/runner/work/healthcare-aws/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8388136Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8390203Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8392065Z hint: to use in all of your new repositories, which will suppress this warning,
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8393521Z hint: call:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8394228Z hint:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8395171Z hint: 	git config --global init.defaultBranch <name>
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8397113Z hint:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8398972Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8401884Z hint: 'development'. The just-created branch can be renamed via this command:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8403360Z hint:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8404140Z hint: 	git branch -m <name>
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8405052Z hint:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8406963Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8409190Z Initialized empty Git repository in /home/runner/work/healthcare-aws/healthcare-aws/.git/
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8413014Z [command]/usr/bin/git remote add origin https://github.com/shivsharadh/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8447940Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8449384Z ##[group]Disabling automatic garbage collection
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8451158Z [command]/usr/bin/git config --local gc.auto 0
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8480362Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8481643Z ##[group]Setting up auth
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8486605Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8517748Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8865257Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.8896252Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9116684Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9154611Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9379147Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9414295Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9418028Z ##[group]Fetching the repository
+Build & Push to ECR	Checkout code	2026-02-23T18:35:44.9426900Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +bcd4f377b4522415eee5a58404d06bb548cd15e8:refs/remotes/origin/main
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3267575Z From https://github.com/shivsharadh/healthcare-aws
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3268545Z  * [new ref]         bcd4f377b4522415eee5a58404d06bb548cd15e8 -> origin/main
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3299493Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3299986Z ##[group]Determining the checkout info
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3302380Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3308551Z [command]/usr/bin/git sparse-checkout disable
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3348170Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3373173Z ##[group]Checking out the ref
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3377812Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3436860Z Switched to a new branch 'main'
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3439889Z branch 'main' set up to track 'origin/main'.
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3448200Z ##[endgroup]
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3485086Z [command]/usr/bin/git log -1 --format=%H
+Build & Push to ECR	Checkout code	2026-02-23T18:35:45.3508718Z bcd4f377b4522415eee5a58404d06bb548cd15e8
+Build & Push to ECR	Configure AWS credentials	﻿2026-02-23T18:35:45.3751580Z ##[group]Run aws-actions/configure-aws-credentials@v4
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3752006Z with:
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3752367Z   aws-access-key-id: ***
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3752775Z   aws-secret-access-key: ***
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3753074Z   aws-region: ***
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3753333Z   audience: sts.amazonaws.com
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3753678Z   output-env-credentials: true
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3753954Z env:
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3754197Z   AWS_REGION: ***
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3754626Z   ECR_REPOSITORY: ***
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3754895Z   ECS_CLUSTER: healthcare-cluster
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3755186Z   ECS_SERVICE: healthcare-svc
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3755473Z   CONTAINER_NAME: healthcare-api
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.3756038Z ##[endgroup]
+Build & Push to ECR	Configure AWS credentials	2026-02-23T18:35:45.7930233Z Proceeding with IAM user credentials
+Build & Push to ECR	Login to Amazon ECR	﻿2026-02-23T18:35:45.8107745Z ##[group]Run aws-actions/amazon-ecr-login@v2
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8108145Z with:
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8108384Z   mask-password: true
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8108665Z   registry-type: private
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8108935Z   skip-logout: false
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8109172Z env:
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8109509Z   AWS_REGION: ***
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8109914Z   ECR_REPOSITORY: ***
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8110184Z   ECS_CLUSTER: healthcare-cluster
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8110477Z   ECS_SERVICE: healthcare-svc
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8110764Z   CONTAINER_NAME: healthcare-api
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8111067Z   AWS_DEFAULT_REGION: ***
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8111355Z   AWS_ACCESS_KEY_ID: ***
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8111772Z   AWS_SECRET_ACCESS_KEY: ***
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:45.8112037Z ##[endgroup]
+Build & Push to ECR	Login to Amazon ECR	2026-02-23T18:35:46.2578360Z Logging into registry 578272379699.dkr.ecr.***.amazonaws.com
+Build & Push to ECR	Build, tag & push image to ECR	﻿2026-02-23T18:35:46.8859090Z ##[group]Run docker build -t $ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REPOSITORY:latest ./backend
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8859810Z [36;1mdocker build -t $ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REPOSITORY:latest ./backend[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860274Z [36;1mdocker push $ECR_REPOSITORY:$IMAGE_TAG[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860601Z [36;1mdocker push $ECR_REPOSITORY:latest[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860949Z [36;1mecho "image=$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8894880Z shell: /usr/bin/bash -e {0}
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8895159Z env:
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8895913Z   AWS_REGION: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896332Z   ECR_REPOSITORY: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896571Z   ECS_CLUSTER: healthcare-cluster
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896819Z   ECS_SERVICE: healthcare-svc
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897070Z   CONTAINER_NAME: healthcare-api
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897325Z   AWS_DEFAULT_REGION: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897577Z   AWS_ACCESS_KEY_ID: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897900Z   AWS_SECRET_ACCESS_KEY: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8898244Z   IMAGE_TAG: bcd4f377b4522415eee5a58404d06bb548cd15e8
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8898548Z ##[endgroup]
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3065245Z #0 building with "default" instance using docker driver
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066035Z 
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066298Z #1 [internal] load build definition from Dockerfile
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066913Z #1 transferring dockerfile: 2B done
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3067364Z #1 DONE 0.0s
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3091021Z ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3147062Z ##[error]Process completed with exit code 1.
+Build & Push to ECR	Post Login to Amazon ECR	﻿2026-02-23T18:35:47.3218310Z Post job cleanup.
+Build & Push to ECR	Post Login to Amazon ECR	2026-02-23T18:35:47.3560076Z Logging out of registry 578272379699.dkr.ecr.***.amazonaws.com
+Build & Push to ECR	Post Configure AWS credentials	﻿2026-02-23T18:35:47.3875899Z Post job cleanup.
+Build & Push to ECR	Post Checkout code	﻿2026-02-23T18:35:47.5192617Z Post job cleanup.
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6139003Z [command]/usr/bin/git version
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6174989Z git version 2.52.0
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6219404Z Temporarily overriding HOME='/home/runner/work/_temp/63c14574-89e0-4d4f-937a-7406863bd3f0' before making global git config changes
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6220820Z Adding repository directory to the temporary git global config as a safe directory
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6233750Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/healthcare-aws/healthcare-aws
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6268586Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6301240Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6530707Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6554267Z http.https://github.com/.extraheader
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6567205Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6598483Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6820338Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build & Push to ECR	Post Checkout code	2026-02-23T18:35:47.6851571Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build & Push to ECR	Complete job	﻿2026-02-23T18:35:47.7174170Z Evaluate and set job outputs
+Build & Push to ECR	Complete job	2026-02-23T18:35:47.7180457Z Cleaning up orphan processes

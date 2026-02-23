@@ -5,11 +5,13 @@ from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
 from sqlalchemy.orm import Session
 
+from typing import List
+
 from database import engine
-from models import Base, User
-from schemas import UserCreate, UserLogin
+from models import Base, User, Claim
+from schemas import UserCreate, UserLogin, ClaimCreate, ClaimUpdate, ClaimResponse
 from auth import hash_password, verify_password, create_access_token
-from dependencies import get_db, require_role
+from dependencies import get_db, get_current_user, require_role
 
 # ─── Rate Limiter ─────────────────────────────────────────────────────────────
 limiter = Limiter(key_func=get_remote_address)
@@ -81,10 +83,63 @@ def login(request: Request, user: UserLogin, db: Session = Depends(get_db)):
     }
 
 
-# 🔹 CLAIMS (insurance only)
-@app.get("/claims")
-def get_claims(current_user=Depends(require_role("insurance"))):
-    return [{"msg": "Claims data for insurance"}]
+# 🔹 CLAIMS (Create)
+@app.post("/claims", response_model=ClaimResponse)
+def create_claim(
+    claim: ClaimCreate,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if current_user.role not in ["hospital", "patient"]:
+        raise HTTPException(status_code=403, detail="Not authorized to create claims")
+    
+    new_claim = Claim(
+        patient_name=claim.patient_name,
+        diagnosis=claim.diagnosis,
+        amount=claim.amount,
+        status="Pending",
+        submitted_by=current_user.username
+    )
+    db.add(new_claim)
+    db.commit()
+    db.refresh(new_claim)
+    return new_claim
+
+
+# 🔹 CLAIMS (Read)
+@app.get("/claims", response_model=List[ClaimResponse])
+def get_claims(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db)
+):
+    if current_user.role == "insurance":
+        return db.query(Claim).all()
+    elif current_user.role == "hospital":
+        return db.query(Claim).filter(Claim.submitted_by == current_user.username).all()
+    elif current_user.role == "patient":
+        return db.query(Claim).filter(
+            (Claim.submitted_by == current_user.username) | 
+            (Claim.patient_name == current_user.username)
+        ).all()
+    return []
+
+
+# 🔹 CLAIMS (Update Status)
+@app.put("/claims/{claim_id}/status", response_model=ClaimResponse)
+def update_claim_status(
+    claim_id: int,
+    claim_update: ClaimUpdate,
+    current_user: User = Depends(require_role("insurance")),
+    db: Session = Depends(get_db)
+):
+    db_claim = db.query(Claim).filter(Claim.id == claim_id).first()
+    if not db_claim:
+        raise HTTPException(status_code=404, detail="Claim not found")
+    
+    db_claim.status = claim_update.status
+    db.commit()
+    db.refresh(db_claim)
+    return db_claim
 
 
 # 🔹 Health check

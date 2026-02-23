@@ -1,0 +1,2 @@
+
+An error occurred (InvalidParameterException) when calling the CreateService operation: The target group with targetGroupArn arn:aws:elasticloadbalancing:us-east-1:578272379699:targetgroup/healthcare-tg-v2/516716e035e4a10c does not have an associated load balancer.

@@ -1,0 +1,24 @@
+Build & Push to ECR	Build, tag & push image to ECR	﻿2026-02-23T18:35:46.8859090Z ##[group]Run docker build -t $ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REPOSITORY:latest ./backend
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8859810Z [36;1mdocker build -t $ECR_REPOSITORY:$IMAGE_TAG -t $ECR_REPOSITORY:latest ./backend[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860274Z [36;1mdocker push $ECR_REPOSITORY:$IMAGE_TAG[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860601Z [36;1mdocker push $ECR_REPOSITORY:latest[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8860949Z [36;1mecho "image=$ECR_REPOSITORY:$IMAGE_TAG" >> $GITHUB_OUTPUT[0m
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8894880Z shell: /usr/bin/bash -e {0}
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8895159Z env:
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8895913Z   AWS_REGION: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896332Z   ECR_REPOSITORY: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896571Z   ECS_CLUSTER: healthcare-cluster
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8896819Z   ECS_SERVICE: healthcare-svc
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897070Z   CONTAINER_NAME: healthcare-api
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897325Z   AWS_DEFAULT_REGION: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897577Z   AWS_ACCESS_KEY_ID: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8897900Z   AWS_SECRET_ACCESS_KEY: ***
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8898244Z   IMAGE_TAG: bcd4f377b4522415eee5a58404d06bb548cd15e8
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:46.8898548Z ##[endgroup]
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3065245Z #0 building with "default" instance using docker driver
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066035Z 
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066298Z #1 [internal] load build definition from Dockerfile
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3066913Z #1 transferring dockerfile: 2B done
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3067364Z #1 DONE 0.0s
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3091021Z ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+Build & Push to ECR	Build, tag & push image to ECR	2026-02-23T18:35:47.3147062Z ##[error]Process completed with exit code 1.

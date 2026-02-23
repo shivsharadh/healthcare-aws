@@ -18,12 +18,22 @@ class Token(BaseModel):
     token_type: str
 
 
-# 🏥 CLAIM RESPONSE
-class ClaimResponse(BaseModel):
-    claim_id: int
+# 🏥 CLAIMS
+class ClaimCreate(BaseModel):
     patient_name: str
     diagnosis: str
     amount: int
+
+class ClaimUpdate(BaseModel):
+    status: str
+
+class ClaimResponse(BaseModel):
+    id: int
+    patient_name: str
+    diagnosis: str
+    amount: int
+    status: str
+    submitted_by: str
 
     class Config:
         from_attributes = True

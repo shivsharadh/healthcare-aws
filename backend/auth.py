@@ -10,11 +10,15 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def hash_password(password: str):
-    return pwd_context.hash(password[:72])
+    # Bcrypt strictly expects <= 72 bytes. Python string slicing isn't byte-safe.
+    # Encode to bytes, truncate to 71 bytes to leave room for null terminator, decode back.
+    truncated_pass = password.encode('utf-8')[:71].decode('utf-8', 'ignore')
+    return pwd_context.hash(truncated_pass)
 
 
 def verify_password(plain_password: str, hashed_password: str):
-    return pwd_context.verify(plain_password[:72], hashed_password)
+    truncated_pass = plain_password.encode('utf-8')[:71].decode('utf-8', 'ignore')
+    return pwd_context.verify(truncated_pass, hashed_password)
 
 
 def create_access_token(data: dict):
