@@ -1,4 +1,8 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 from sqlalchemy.orm import Session
 
 from database import engine
@@ -7,14 +11,34 @@ from schemas import UserCreate, UserLogin
 from auth import hash_password, verify_password, create_access_token
 from dependencies import get_db, require_role
 
-app = FastAPI()
+# ─── Rate Limiter ─────────────────────────────────────────────────────────────
+limiter = Limiter(key_func=get_remote_address)
+
+app = FastAPI(title="Healthcare Claims API")
+
+# ─── Rate limit error handler ─────────────────────────────────────────────────
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
+# ─── CORS ─────────────────────────────────────────────────────────────────────
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:3000",       # Local frontend dev
+        "http://localhost:8000",       # Local Swagger
+    ],
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
+    allow_headers=["Authorization", "Content-Type"],
+)
 
 Base.metadata.create_all(bind=engine)
 
 
-# 🔹 REGISTER
+# 🔹 REGISTER — rate limited to 5 attempts/minute
 @app.post("/register")
-def register(user: UserCreate, db: Session = Depends(get_db)):
+@limiter.limit("5/minute")
+def register(request: Request, user: UserCreate, db: Session = Depends(get_db)):
 
     existing = db.query(User).filter(User.username == user.username).first()
     if existing:
@@ -33,9 +57,10 @@ def register(user: UserCreate, db: Session = Depends(get_db)):
     return {"message": "User created"}
 
 
-# 🔹 LOGIN
+# 🔹 LOGIN — rate limited to 10 attempts/minute (brute-force protection)
 @app.post("/login")
-def login(user: UserLogin, db: Session = Depends(get_db)):
+@limiter.limit("10/minute")
+def login(request: Request, user: UserLogin, db: Session = Depends(get_db)):
 
     db_user = db.query(User).filter(User.username == user.username).first()
 
@@ -59,3 +84,9 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
 @app.get("/claims")
 def get_claims(current_user=Depends(require_role("insurance"))):
     return [{"msg": "Claims data for insurance"}]
+
+
+# 🔹 Health check
+@app.get("/health")
+def health():
+    return {"status": "ok"}
