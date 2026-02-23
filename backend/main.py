@@ -26,6 +26,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000",       # Local frontend dev
         "http://localhost:8000",       # Local Swagger
+        "http://healthcare-alb-2089454178.us-east-1.elb.amazonaws.com",  # ALB URL
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE"],
