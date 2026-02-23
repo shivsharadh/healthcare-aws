@@ -1,14 +1,14 @@
-# Python
+# env files
+.env
+backend/.env
+
+# python
 __pycache__/
 *.pyc
 
-# Environments
+# venv
 venv/
 .venv/
-backend/venv/
 
-# Env files
-.env
-
-# VS Code
+# vscode
 .vscode/

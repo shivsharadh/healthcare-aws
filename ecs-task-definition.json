@@ -1,0 +1,43 @@
+{
+  "family": "healthcare-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::578272379699:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "healthcare-api",
+      "image": "578272379699.dkr.ecr.us-east-1.amazonaws.com/healthcare-api:latest",
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "hostPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": [
+        {
+          "value": "postgresql://dbadmin:Healthcare%232024@healthcare-db.c4t22o2umgsv.us-east-1.rds.amazonaws.com:5432/healthcare",
+          "name": "DATABASE_URL"
+        },
+        {
+          "value": "healthcare-super-secret-jwt-key-2024",
+          "name": "SECRET_KEY"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/healthcare-api",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs",
+          "awslogs-create-group": "true"
+        }
+      }
+    }
+  ]
+}
